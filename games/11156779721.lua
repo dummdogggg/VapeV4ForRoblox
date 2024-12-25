@@ -227,7 +227,7 @@ run(function()
 									AIHit:FireServer(tool, aiController:GetServerModelFromClientModel(v.Character))
 								else
 									local public, private = Crypt.checkpublickeys()
-									meleePlayer:FireServer(tool, Crypt.le3(math.abs(v.Player.UserId), public, private))
+									meleePlayer:FireServer(tool, Crypt.localencrypt(math.abs(v.Player.UserId), public, private))
 								end
 								break
 							end
