@@ -226,8 +226,13 @@ run(function()
 								if v.NPC then
 									AIHit:FireServer(tool, aiController:GetServerModelFromClientModel(v.Character))
 								else
+									local lasthit = 0
 									local public, private = Crypt.checkpublickeys()
+									if tick() - lasthit < 0.25 then
+										return
+									end
 									meleePlayer:FireServer(tool, Crypt.localencrypt(math.abs(v.Player.UserId), public, private))
+									lasthit = tick()
 								end
 								break
 							end
